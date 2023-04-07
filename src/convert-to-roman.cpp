@@ -87,3 +87,19 @@ std::string ctr::determineNumerals(int value, ArabicNumeralSet* numeralSetPointe
 
     return (prefix + baseLetter + postfix);
 }
+
+std::string ArabicUnit::getLowNumeral(){return "I";}
+std::string ArabicUnit::getMidNumeral(){return "V";}
+std::string ArabicUnit::getHighNumeral(){return "X";}
+
+std::string ArabicTen::getLowNumeral(){return "X";}
+std::string ArabicTen::getMidNumeral(){return "L";}
+std::string ArabicTen::getHighNumeral(){return "C";}
+
+std::string ArabicHundread::getLowNumeral(){return "C";}
+std::string ArabicHundread::getMidNumeral(){return "D";}
+std::string ArabicHundread::getHighNumeral(){return "M";}
+
+std::string ArabicThousand::getLowNumeral(){return "M";}
+std::string ArabicThousand::getMidNumeral(){return ".";}
+std::string ArabicThousand::getHighNumeral(){return ",";}

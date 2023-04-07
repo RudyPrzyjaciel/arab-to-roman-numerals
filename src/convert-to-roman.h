@@ -9,33 +9,33 @@ public:
 class ArabicUnit : public ArabicNumeralSet
 {
 public:
-    std::string getLowNumeral() override { return "I"; }
-    std::string getMidNumeral() override { return "V"; }
-    std::string getHighNumeral() override { return "X"; }
+    std::string getLowNumeral() override;
+    std::string getMidNumeral() override;
+    std::string getHighNumeral() override;
 };
 
 class ArabicTen : public ArabicNumeralSet
 {
 public:
-    std::string getLowNumeral() override { return "X"; }
-    std::string getMidNumeral() override { return "L"; }
-    std::string getHighNumeral() override { return "C"; }
+    std::string getLowNumeral() override;
+    std::string getMidNumeral() override;
+    std::string getHighNumeral() override;
 };
 
 class ArabicHundread : public ArabicNumeralSet
 {
 public:
-    std::string getLowNumeral() override { return "C"; }
-    std::string getMidNumeral() override { return "D"; }
-    std::string getHighNumeral() override { return "M"; }
+    std::string getLowNumeral() override;
+    std::string getMidNumeral() override;
+    std::string getHighNumeral() override;
 };
 
 class ArabicThousand : public ArabicNumeralSet
 {
 public:
-    std::string getLowNumeral() override { return "M"; }
-    std::string getMidNumeral() override { return "."; }
-    std::string getHighNumeral() override { return ","; }
+    std::string getLowNumeral() override;
+    std::string getMidNumeral() override;
+    std::string getHighNumeral() override;
 };
 
 namespace ctr // Convert To Roman
