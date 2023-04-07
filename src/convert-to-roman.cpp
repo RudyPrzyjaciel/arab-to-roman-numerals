@@ -17,14 +17,34 @@
 
 std::string ctr::convertArabicToRoman(int value)
 {
-    return determineUnit(value);
+    ArabicUnit units;
+    ArabicNumeralSet* numeralSetPointer = &units;
+    std::string unitNumeral = determineNumerals(value, numeralSetPointer);
+
+    
+    ArabicTen tens;
+    numeralSetPointer = &tens;
+    std::string tenNumeral = determineNumerals(value/10, numeralSetPointer);
+
+    
+    ArabicHundread hundreads;
+    numeralSetPointer = &hundreads;
+    std::string hundreadNumeral = determineNumerals(value/100, numeralSetPointer);
+
+    
+    ArabicThousand thausands;
+    numeralSetPointer = &thausands;
+    std::string thausandNumeral = determineNumerals(value/1000, numeralSetPointer);
+
+    return thausandNumeral + hundreadNumeral + tenNumeral + unitNumeral;
 }
 
-std::string ctr::determineUnit(int value)
+std::string ctr::determineNumerals(int value, ArabicNumeralSet* numeralSetPointer)
 {
     if (value == 0) return "";
  
     int unit = value % 10;
+    // int unit = value;
     int baseLetterWeight;
     const int weightA = 1;
     const int weightB = 5;
@@ -35,11 +55,11 @@ std::string ctr::determineUnit(int value)
     switch(unit)
     {
         case weightC - weightA ... weightC:
-            baseLetter = "X";
+            baseLetter = numeralSetPointer->getHighNumeral();
             baseLetterWeight = 10;
             break;
         case weightB - weightA ... weightC - 2*weightA:
-            baseLetter = "V";
+            baseLetter = numeralSetPointer->getMidNumeral();
             baseLetterWeight = 5;
             break;
         default:
@@ -54,14 +74,14 @@ std::string ctr::determineUnit(int value)
     {
         for (;prefixAndPostfixCounter > 0; prefixAndPostfixCounter--)
         {
-            postfix += "I";
+            postfix += numeralSetPointer->getLowNumeral();
         }
     }
     else if (prefixAndPostfixCounter < 0)
     {
         for (;prefixAndPostfixCounter < 0; prefixAndPostfixCounter++)
         {
-            prefix += "I";
+            prefix += numeralSetPointer->getLowNumeral();;
         }
     }
 
