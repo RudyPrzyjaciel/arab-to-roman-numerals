@@ -1,12 +1,12 @@
 GTEST_DIR=../googletest/googletest
 
-SRC_DIR=../
+SRC_DIR=../src
 USER_DIR=.
 
 CPPFLAGS += -isystem $(GTEST_DIR)/include -isystem $(SRC_DIR)
 CXXFLAGS += -g -Wall -Wextra -pthread
 
-TESTS = test_suite
+TESTS = test_suite.out
 
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
                 $(GTEST_DIR)/include/gtest/internal/*.h
@@ -40,5 +40,5 @@ convert-to-roman.o : $(SRC_DIR)/convert-to-roman.cpp $(GTEST_HEADERS)
 test_suite.o : $(USER_DIR)/test_suite.cpp $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/test_suite.cpp
 
-test_suite : test_suite.o gtest_main.a convert-to-roman.o
+test_suite.out : test_suite.o gtest_main.a convert-to-roman.o
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
